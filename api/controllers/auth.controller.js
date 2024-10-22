@@ -99,6 +99,10 @@ export const signIn_Post = async (req, res, next) => {
 //! Function To Log Out:
 export const logOut_Post = async (req, res, next) => {
   try {
+    res.cookie("access_token", "", {
+      maxAge: 1,
+    });
+    res.status(200).json({ message: "User Logged out successfully!" });
   } catch (error) {
     console.log("Error while logging out", error.message);
     next(error);
