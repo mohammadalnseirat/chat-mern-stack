@@ -69,6 +69,27 @@ export const signUp_Post = async (req, res, next) => {
 //! Function To Sign In:
 export const signIn_Post = async (req, res, next) => {
   try {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username });
+    if (!user) {
+      return next(handleErrors(404, "Invalid username or password"));
+    }
+    const isCorrectPassword = bcryptjs.compareSync(
+      password,
+      user.password || ""
+    );
+    if (!isCorrectPassword) {
+      return next(handleErrors(400, "Invalid username or password"));
+    }
+
+    // ?genterate token and set cookie:
+    genderateTokenAndSetCookie(user._id, res);
+    res.status(200).json({
+      _id: user._id,
+      fullName: user.fullName,
+      username: user.username,
+      profilePicture: user.profilePicture,
+    });
   } catch (error) {
     console.log("Error while signing in", error.message);
     next(error);
