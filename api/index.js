@@ -1,15 +1,18 @@
 import express from "express";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 import { connectionToDatabase } from "./config/db.js";
 import authRoutes from "./routes/auth.route.js";
+import messageRoutes from "./routes/message.route.js";
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(express.json()); //! to parse the incoming requests with JSON payloads (from req.body)
-
+app.use(cookieParser());
 // ?Routes here:
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/messages", messageRoutes);
 
 app.listen(PORT, () => {
   connectionToDatabase();
@@ -17,12 +20,12 @@ app.listen(PORT, () => {
 });
 
 // *Middleware to Handle Errors:
-app.use((err,req,res,next)=>{
+app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";
   res.status(statusCode).json({
     success: false,
     message,
-    statusCode
-  })
-})
+    statusCode,
+  });
+});
