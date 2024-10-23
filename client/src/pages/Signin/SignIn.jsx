@@ -10,7 +10,7 @@ const SignIn = () => {
         </h1>
         <form>
           <div>
-            <label className="label p-2">
+            <label className="label">
               <span className="label-text text-base text-gray-300">Username:</span>
             </label>
             <input
