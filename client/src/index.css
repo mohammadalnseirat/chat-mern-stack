@@ -2,10 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
-body{
-    background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/bg.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+/* dark mode looking scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #555;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #121212;
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #242424;
 }
