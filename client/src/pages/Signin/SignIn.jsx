@@ -10,6 +10,7 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await signInUser(inputs);
+    setInputs({ username: "", password: "" });
   };
   return (
     <div className="flex felx-col items-center justify-center min-w-96 mx-auto">
@@ -58,7 +59,9 @@ const SignIn = () => {
             {"Don't"} have an Account?
           </Link>
           <button
-            disabled={loading || inputs.username === "" || inputs.password === ""}
+            disabled={
+              loading || inputs.username === "" || inputs.password === ""
+            }
             className="btn btn-primary btn-block btn-md  uppercase mt-4 disabled:text-gray-200 disabled:bg-opacity-90"
           >
             {loading ? (

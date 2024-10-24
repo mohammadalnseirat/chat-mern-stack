@@ -3,6 +3,7 @@ import Messages from "./Messages";
 import MessageInput from "./MessageInput";
 import { BiSolidMessageAdd } from "react-icons/bi";
 import useConversation from "../../zustand/useConversation";
+import { useAuthContext } from "../../Context/AuthContext";
 
 const MessageContainer = () => {
   const { selectedConversation, setSelectedConversation } = useConversation();
@@ -39,10 +40,13 @@ const MessageContainer = () => {
 export default MessageContainer;
 
 const NoSelectedConversation = () => {
+  const { authUser } = useAuthContext();
   return (
     <div className="flex items-center justify-center w-full h-full">
       <div className="px-4 text-center sm:text-lg md:text-2xl text-gray-300 font-semibold flex flex-col items-center gap-2">
-        <p className="capitalize text-gray-200">Welcom👋🏻 Razan</p>
+        <p className="capitalize text-gray-200">
+          Welcom👋🏻 {authUser.fullName}
+        </p>
         <p className="text-green-500">Selcet a Chat to Start messaging</p>
         <BiSolidMessageAdd className="text-3xl md:text-6xl text-center text-red-500 hover:scale-110 transition-all duration-300 " />
       </div>

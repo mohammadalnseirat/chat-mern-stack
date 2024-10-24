@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useAuthContext } from "./AuthContext";
 import io from "socket.io-client";
 // ! Implement Socket  set up for client side:
@@ -15,8 +15,15 @@ export const SocketContextProvider = ({ children }) => {
     // ? check if there is user and create socket connection:
     if (authUser) {
       // * URL For Backend:
-      const socket = io("http://localhost:3000");
+      const socket = io("http://localhost:3000", {
+        query: {
+          userId: authUser._id,
+        },
+      });
       setSocket(socket);
+      socket.on('getOnlineUsers',(users)=>{
+        setOnlineUsers(users)
+      })
       // ? clear the connection when the component unmounts:
       return () => {
         socket.close();
@@ -34,4 +41,9 @@ export const SocketContextProvider = ({ children }) => {
       {children}
     </SocketContext.Provider>
   );
+};
+
+// *3-Create Hook to consume the context
+export const useSocketContext = () => {
+  return useContext(SocketContext);
 };
