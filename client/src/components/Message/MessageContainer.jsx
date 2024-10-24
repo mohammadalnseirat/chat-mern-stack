@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Messages from "./Messages";
 import MessageInput from "./MessageInput";
 import { BiSolidMessageAdd } from "react-icons/bi";
+import useConversation from "../../zustand/useConversation";
 
 const MessageContainer = () => {
-  const noselectedConversation = !true;
+  const { selectedConversation, setSelectedConversation } = useConversation();
+
+  //! useEffect for commponent will unMount:
+  useEffect(() => {
+    return () => setSelectedConversation(null);
+  }, [setSelectedConversation]);
+
   return (
     <div className="sm:min-w-[450px] flex flex-col">
-      {noselectedConversation ? (
+      {!selectedConversation ? (
         <NoSelectedConversation />
       ) : (
         <>
@@ -17,7 +24,7 @@ const MessageContainer = () => {
               To:
             </span>
             <span className="text-gray-300 font-bold font-mono text-2xl">
-              Mohammad
+              {selectedConversation?.fullName}
             </span>
           </div>
           {/* Header End Here */}
