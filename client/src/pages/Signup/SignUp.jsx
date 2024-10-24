@@ -1,5 +1,6 @@
 import React from "react";
 import GenderCheckBox from "./GenderCheckBox";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   return (
@@ -27,25 +28,41 @@ const SignUp = () => {
                 Username:
               </span>
             </label>
-            <input type="text" placeholder="Enter your username" className="input input-bordered w-full h-10 focus:outline-sky-500" />
+            <input
+              type="text"
+              placeholder="Enter your username"
+              className="input input-bordered w-full h-10 focus:outline-sky-500"
+            />
           </div>
           <div>
             <label className="label">
-              <span className="label-text text-gray-300 text-base">Password</span>
+              <span className="label-text text-gray-300 text-base">
+                Password
+              </span>
             </label>
-            <input type="password" placeholder="Enter your password" className="input input-bordered w-full h-10 focus:outline-sky-500" />
+            <input
+              type="password"
+              placeholder="Enter your password"
+              className="input input-bordered w-full h-10 focus:outline-sky-500"
+            />
           </div>
           <div>
             <label className="label">
-              <span className="label-text text-gray-300 text-base">Confirm Password:</span>
+              <span className="label-text text-gray-300 text-base">
+                Confirm Password:
+              </span>
             </label>
-            <input type="passsword" placeholder="Confirm your password" className="input input-bordered w-full h-10 focus:outline-sky-500" />
+            <input
+              type="passsword"
+              placeholder="Confirm your password"
+              className="input input-bordered w-full h-10 focus:outline-sky-500"
+            />
           </div>
           {/* Gender Components Will be here */}
-          <GenderCheckBox/>
-          <a href="#" className="text-sky-500 text-sm mt-2">
+          <GenderCheckBox />
+          <Link to="/signin" className="text-sky-500 hover:underline text-sm mt-2">
             Have An Account?
-          </a>
+          </Link>
           <button className="btn btn-primary btn-sm btn-block uppercase mt-2">
             Sign Up
           </button>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   return (
@@ -11,7 +12,9 @@ const SignIn = () => {
         <form>
           <div>
             <label className="label">
-              <span className="label-text text-base text-gray-300">Username:</span>
+              <span className="label-text text-base text-gray-300">
+                Username:
+              </span>
             </label>
             <input
               type="text"
@@ -31,9 +34,12 @@ const SignIn = () => {
               className="input input-bordered w-full h-10 focus:outline-sky-500"
             />
           </div>
-          <a href="#" className="text-sky-500 mt-2 inline-block">
+          <Link
+            to={"/signup"}
+            className="text-sky-500 mt-2 hover:underline inline-block"
+          >
             {"Don't"} have an Account?
-          </a>
+          </Link>
           <button className="btn btn-primary btn-block btn-sm uppercase mt-4">
             Sign In
           </button>

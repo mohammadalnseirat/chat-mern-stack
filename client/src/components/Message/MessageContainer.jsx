@@ -4,7 +4,7 @@ import MessageInput from "./MessageInput";
 import { BiSolidMessageAdd } from "react-icons/bi";
 
 const MessageContainer = () => {
-  const noselectedConversation = true;
+  const noselectedConversation = !true;
   return (
     <div className="sm:min-w-[450px] flex flex-col">
       {noselectedConversation ? (
