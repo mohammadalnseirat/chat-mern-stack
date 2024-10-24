@@ -30,7 +30,7 @@ const MessageInput = () => {
           {loading ? (
             <div className="loading loading-ring"></div>
           ) : (
-            <MdSend className="w-6 h-6 text-gray-100" />
+            <MdSend className="w-6 h-6 text-gray-800" />
           )}
         </button>
       </div>

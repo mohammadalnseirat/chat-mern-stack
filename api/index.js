@@ -5,10 +5,11 @@ import { connectionToDatabase } from "./config/db.js";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import userRoutes from "./routes/user.route.js";
+import { app, server } from "./socket/socket.js";
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
-const app = express();
+
 app.use(express.json()); //! to parse the incoming requests with JSON payloads (from req.body)
 app.use(cookieParser());
 // ?Routes here:
@@ -16,7 +17,7 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/messages", messageRoutes);
 app.use("/api/v1/users", userRoutes);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   connectionToDatabase();
   console.log(`server is running on port ${PORT}`);
 });
