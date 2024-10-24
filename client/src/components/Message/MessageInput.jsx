@@ -24,7 +24,7 @@ const MessageInput = () => {
           onChange={(e) => setMessage(e.target.value)}
         />
         <button
-          disabled={loading || !message}
+          disabled={loading}
           className="absolute inset-y-0 end-0  bg-green-600 flex items-center justify-center gap-3 px-3 rounded-tl-md rounded-tr-full rounded-br-full rounded-bl-md"
         >
           {loading ? (
