@@ -10,7 +10,6 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await signInUser(inputs);
-    setInputs({ username: "", password: "" });
   };
   return (
     <div className="flex felx-col items-center justify-center min-w-96 mx-auto">
